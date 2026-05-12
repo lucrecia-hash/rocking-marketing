@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Marketing · Mayo 2026 · Rocking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cyan:        #00D2FF;
+    --cyan-dim:    #3DBDEE;
+    --dark:        #0D0D0D;
+    --dark2:       #1D1D1B;
+    --dark3:       #252523;
+    --dark4:       #2E2E2C;
+    --text:        #F0F0EE;
+    --text-muted:  #888884;
+    --text-dim:    #444442;
+    --border:      rgba(0,210,255,0.13);
+    --border-mid:  rgba(0,210,255,0.25);
+    --border-hi:   rgba(0,210,255,0.40);
+    --green:       #3ECF8E;
+    --amber:       #F59E0B;
+    --red:         #EF4444;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── GRID LINES BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,210,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,210,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes lineGrow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+  }
+
+  .fade-1 { animation: fadeUp 0.6s ease both; }
+  .fade-2 { animation: fadeUp 0.6s 0.1s ease both; }
+  .fade-3 { animation: fadeUp 0.6s 0.2s ease both; }
+  .fade-4 { animation: fadeUp 0.6s 0.3s ease both; }
+  .fade-5 { animation: fadeUp 0.6s 0.4s ease both; }
+
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+
+  .periodo-pill {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--dark);
+    background: var(--cyan);
+    padding: 5px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .header h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .header h1 strong {
+    font-weight: 800;
+    color: var(--cyan);
+    display: block;
+  }
+
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── NORTE ── */
+  .norte {
+    background: var(--dark2);
+    border: 0.5px solid var(--border-hi);
+    border-left: 3px solid var(--cyan);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .norte-icon {
+    font-size: 22px;
+    color: var(--cyan);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .norte-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .norte-text {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .norte-text strong { color: var(--cyan); font-weight: 600; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── OBJ CARDS ── */
+  .obj-list { margin-bottom: 3rem; }
+
+  .obj-card {
+    background: var(--dark2);
+    border: 0.5px solid var(--border);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .obj-card:hover { border-color: var(--border-mid); }
+
+  .obj-card.open { border-color: var(--border-hi); }
+
+  .obj-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.125rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .obj-num {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    min-width: 24px;
+  }
+
+  .obj-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .obj-tag {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 0.5px solid var(--border-mid);
+    color: var(--cyan-dim);
+    background: rgba(0,210,255,0.06);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .obj-tag.comodin {
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+    border-color: var(--border);
+  }
+
+  .obj-chevron {
+    font-size: 10px;
+    color: var(--text-dim);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+
+  .obj-card.open .obj-chevron { transform: rotate(180deg); }
+
+  .obj-body {
+    display: none;
+    padding: 0 1.5rem 1.5rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .obj-card.open .obj-body { display: block; }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-top: 1rem;
+  }
+
+  .detail-block {
+    background: var(--dark3);
+    padding: 0.875rem 1rem;
+  }
+
+  .detail-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyan-dim);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .detail-text {
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  .detail-text ul { padding-left: 1rem; }
+  .detail-text li { margin-bottom: 3px; }
+
+  .dep-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--amber);
+    margin-top: 4px;
+  }
+
+  /* ── COMODIN ── */
+  .obj-card.is-comodin {
+    opacity: 0.65;
+    border-color: rgba(0,210,255,0.06);
+  }
+
+  .obj-card.is-comodin .obj-num { color: var(--text-muted); }
+
+  /* ── SEMANAS ── */
+  .semanas { margin-bottom: 3rem; }
+
+  .semana-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1rem;
+    margin-bottom: 0.875rem;
+    align-items: start;
+  }
+
+  .semana-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    padding-top: 4px;
+    line-height: 1.4;
+  }
+
+  .semana-label strong {
+    display: block;
+    font-weight: 500;
+    color: var(--cyan-dim);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  .semana-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pill {
+    font-size: 11px;
+    padding: 5px 11px;
+    border: 0.5px solid var(--border);
+    color: var(--text-muted);
+    background: var(--dark3);
+    transition: all 0.15s;
+  }
+
+  .pill.active {
+    background: rgba(0,210,255,0.07);
+    color: var(--cyan-dim);
+    border-color: var(--border-mid);
+  }
+
+  /* ── REPORTE ── */
+  .reporte {
+    background: var(--dark2);
+    border: 0.5px solid var(--border-hi);
+    padding: 1.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .reporte-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .reporte-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+  }
+
+  .reporte-sub { font-size: 11px; color: var(--text-muted); }
+
+  .rep-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 1.5rem;
+    table-layout: fixed;
+  }
+
+  .rep-table th {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 0.5px solid var(--border-mid);
+    font-weight: 400;
+  }
+
+  .rep-table td {
+    padding: 10px 10px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.03);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .rep-table tr:last-child td { border-bottom: none; }
+
+  .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .d-green  { background: var(--green); }
+  .d-cyan   { background: var(--cyan); }
+  .d-amber  { background: var(--amber); }
+  .d-gray   { background: var(--text-dim); }
+
+  .badge {
+    display: inline-block;
+    font-size: 9px;
+    padding: 2px 7px;
+    margin-left: 5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .b-ok    { background: rgba(62,207,142,0.12); color: var(--green); }
+  .b-wip   { background: rgba(0,210,255,0.10);  color: var(--cyan-dim); }
+  .b-block { background: rgba(245,158,11,0.12); color: var(--amber); }
+
+  .rep-bloques {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  .rep-bloque {
+    background: var(--dark3);
+    padding: 1rem;
+  }
+
+  .rep-bloque-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyan-dim);
+    margin-bottom: 0.625rem;
+    font-weight: 500;
+  }
+
+  .rep-bloque.warn .rep-bloque-label { color: var(--amber); }
+
+  .rep-bloque ul { padding-left: 1rem; }
+  .rep-bloque li {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--dark2);
+    border-left: 2px solid var(--border-mid);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .footnote strong { color: var(--cyan-dim); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .footer-url { font-size: 11px; color: var(--text-dim); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 620px) {
+    .detail-grid    { grid-template-columns: 1fr; }
+    .rep-bloques    { grid-template-columns: 1fr; }
+    .semana-row     { grid-template-columns: 90px 1fr; }
+    .header-top     { flex-direction: column; gap: 0.75rem; }
+    .obj-tag        { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header fade-1">
+    <div class="header-top">
+      <div class="logo">Marketing</div>
+      <div class="periodo-pill">11–31 Mayo 2026</div>
+    </div>
+    <h1>Plan mensual<strong>Mayo 2026</strong></h1>
+    <p class="header-meta">Aumentar el flujo de oportunidades comerciales en 6 meses · Canales: LinkedIn + Sales Navigator + programa de referidos.</p>
+  </header>
+
+  <!-- NORTE -->
+  <div class="norte fade-2">
+    <div class="norte-icon">→</div>
+    <div>
+      <div class="norte-label">Objetivo norte · 6 meses</div>
+      <div class="norte-text">
+        <strong>Aumentar el flujo de oportunidades comerciales en 6 meses</strong> · Indicadores: conversaciones iniciadas, reuniones generadas y SQLs · Canales: LinkedIn + Sales Navigator + programa de referidos.
+      </div>
+      <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid rgba(0,210,255,0.2);display:flex;align-items:flex-start;gap:0.75rem;">
+        <span style="font-size:10px;letter-spacing:0.15em;color:#F59E0B;text-transform:uppercase;font-weight:600;white-space:nowrap;margin-top:2px;">Hito 3 meses · Agosto</span>
+        <span style="font-size:13px;color:#888884;line-height:1.5;">Primera reunión generada por programa de referidos + 3 conversaciones calificadas abiertas en Sales Navigator.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJETIVOS -->
+  <div class="fade-3">
+    <div class="section-title">Objetivos del mes</div>
+
+    <div class="obj-list">
+
+      <!-- OBJ 01 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">01</span>
+          <span class="obj-title">Calendario de contenidos ejecutado al 100%</span>
+          <span class="obj-tag">Impacto alto</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">Canal de adquisición con menor CAC. Sin consistencia, todo lo demás pierde fuerza. Alimenta directamente al ICP: el fundador de pyme que escucha a peers en LinkedIn.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta mayo</div>
+              <div class="detail-text">100% de posts planificados publicados: Rocking brand + voz Martín + voz Emilio. Mínimo 6 posts en las dos semanas restantes.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: % posts publicados vs. planificados.</li>
+                  <li>Secundaria: impresiones + tasa de engagement promedio por perfil.</li>
+                  <li>Fuente: LinkedIn Analytics (semanal).</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Hito mayo parcial</div>
+              <div class="detail-text">Sem 1: 3 posts publicados. Sem 2: restantes. Cada viernes se reporta publicados vs. planificados.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 02 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">02</span>
+          <span class="obj-title">1 caso de éxito publicado</span>
+          <span class="obj-tag">Impacto alto</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">Mayor activo de conversión en etapa de evaluación del ICP. El fundador decide por prueba social de pares.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta mayo</div>
+              <div class="detail-text">1 caso con cliente real: Eurotur, con datos concretos: ROI, horas ahorradas, proceso transformado. Publicado en LinkedIn + subido a web.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: publicado sí/no antes del 31/05/2026.</li>
+                  <li>Secundaria: alcance del post + visitas a la página del caso en GA4.</li>
+                  <li>Fuente: LinkedIn Analytics + GA4.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Hito mayo parcial</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Sem 1: redacción del copy para LinkedIn.</li>
+                  <li>Sem 2: edición y aprobación.</li>
+                  <li>Sem 3: subido a la web de Rocking y publicación.</li>
+                </ul>
+                <div class="dep-flag">⚠ Requiere ok de Martín y del cliente antes de publicar.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 03 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">03</span>
+          <span class="obj-title">4 videos editados de la jornada de filmación</span>
+          <span class="obj-tag">Producción</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">El video humaniza la marca y amplifica el alcance orgánico en LinkedIn. 4 videos representan 12 horas de producción real (incluye margen por rechazos e iteraciones).</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta mayo</div>
+              <div class="detail-text">4 videos de 1 min: revisados, filtrados, editados en CapCut y listos para publicar. Priorizar los que mejor representen al ICP (Segmento B: pyme 50–200 empleados).</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: N° de videos entregados listos para publicar.</li>
+                  <li>Secundaria: views + engagement en LinkedIn por video.</li>
+                  <li>Fuente: CapCut entregables + LinkedIn Analytics.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Hito mayo parcial</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Sem 1: 2 videos listos.</li>
+                  <li>Sem 2: restantes.</li>
+                  <li>Total estimado de producción: 12 horas.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 04 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">04</span>
+          <span class="obj-title">Pipeline Sales Navigator: lista + primeros mensajes</span>
+          <span class="obj-tag">Pipeline</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">El outbound personalizado a 200–300 empresas del SAM es canal explícito de la estrategia. No genera leads en mayo pero construye el pipeline de los próximos 6 meses.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta mayo</div>
+              <div class="detail-text">30 perfiles calificados identificados (pymes 50–200 empleados, Segmento B) + 10 mensajes enviados personalizados.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Actividad: N° perfiles en lista calificada.</li>
+                  <li>Actividad: N° mensajes enviados.</li>
+                  <li>Actividad: N° respuestas recibidas.</li>
+                  <li>Resultado: N° conversaciones iniciadas.</li>
+                  <li>Resultado: N° reuniones generadas.</li>
+                  <li>Resultado: N° SQLs identificados.</li>
+                  <li>Fuente: Sales Navigator + Google Sheets de seguimiento.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Hito mayo parcial</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Sem 1: lista armada con criterios definidos.</li>
+                  <li>Sem 2: aprobación de mensajes a enviar.</li>
+                  <li>Sem 3: 10 mensajes enviados.</li>
+                </ul>
+                <div class="dep-flag">⚠ Criterios de calificación y mensajes a alinear con Martín primero.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 05 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">05</span>
+          <span class="obj-title">Web: arquitectura aprobada + diseño de home finalizado</span>
+          <span class="obj-tag">Infraestructura</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">La web actual no está actualizada. Se trabaja con Atu en dos sprints de dos semanas cada uno. Prioridad: contenido y estructura primero, diseño después.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta mayo (acotada)</div>
+              <div class="detail-text">Arquitectura aprobada por Martín y Emilio + contenidos aprobados + draft de homepage para revisión. El resto del proyecto se termina de implementar en junio. Fecha límite: 31/05/2026.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: arquitectura aprobada sí/no + diseño de home finalizado sí/no.</li>
+                  <li>Secundaria: feedback de Martín y Emilio incorporado.</li>
+                  <li>Fuente: documento de arquitectura + aprobación formal.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Dependencias</div>
+              <div class="detail-text">
+                Requiere aprobación de textos por Martín y Emilio antes de codificar.
+                <div class="dep-flag">⚠ Sin eso, el HTML no avanza.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 06 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">06</span>
+          <span class="obj-title">Diseño del sistema de referidos</span>
+          <span class="obj-tag">Pipeline</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">El 90% de los clientes de Rocking llegaron por referidos. El enfoque no es pedir referencias de forma transaccional sino construir fidelización real: buen servicio, NPS alto y seguimiento personalizado según el potencial de cada cliente.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta mayo (diseño, no ejecución)</div>
+              <div class="detail-text">Sistema documentado con: segmentación de clientes por potencial, momentos de activación y mensajes de fidelización por etapa. Listo para ejecutar en junio. Estimación: 3–4 horas.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Los 3 momentos del referido</div>
+              <div class="detail-text">
+                <ul>
+                  <li><strong>Durante la ejecución:</strong> construir confianza, avisar que habrá caso de éxito.</li>
+                  <li><strong>A mitad y cierre de proyecto:</strong> medir satisfacción (NPS), identificar oportunidades de expansión.</li>
+                  <li><strong>1–2 meses post-cierre:</strong> seguimiento personalizado a clientes con mayor potencial.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: sistema documentado sí/no antes del 31/05/2026.</li>
+                  <li>Secundaria (junio en adelante): N° de referidos activados + N° de leads generados por referido.</li>
+                  <li>Fuente: doc de sistema + seguimiento manual.</li>
+                </ul>
+                <div class="dep-flag">⚠ Requiere alineación con Martín y Emilio sobre clientes actuales a activar en junio.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMODÍN -->
+      <div class="obj-card is-comodin" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num" style="color:var(--text-muted)">+1</span>
+          <span class="obj-title" style="color:var(--text-muted)">Evento con LIMBO</span>
+          <span class="obj-tag comodin">Depende de terceros</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué es adicional</div>
+              <div class="detail-text">Depende de decisiones de LIMBO y disponibilidad de Martín/Emilio. No puede bloquear los 6 objetivos principales si se demora.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Hito mayo si avanza</div>
+              <div class="detail-text">Brief del evento + fecha tentativa.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">% de los 2 hitos completados. Si no avanza en mayo, pasa a junio sin afectar la evaluación del mes.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Nota</div>
+              <div class="detail-text">Se reporta en el bloque "qué bloqueó" del reporte semanal si hay fricción con LIMBO.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEMANAS -->
+  <div class="fade-4">
+    <div class="section-title">Distribución semanal</div>
+
+    <div class="semanas">
+      <div class="semana-row">
+        <div class="semana-label">
+          <strong>Sem 1</strong>
+          11–15 mayo
+        </div>
+        <div class="semana-pills">
+          <span class="pill active">Calendario: posts sem 1</span>
+          <span class="pill active">Videos: 2 primeros</span>
+          <span class="pill active">Caso de éxito: redacción del copy para LinkedIn</span>
+          <span class="pill active">Sales Nav: lista 30 perfiles</span>
+          <span class="pill active">Web: proponer arquitectura + contenidos</span>
+          <span class="pill active">Referidos: preparar framework de segmentación para validar con Martín y Emilio</span>
+        </div>
+      </div>
+      <div class="semana-row">
+        <div class="semana-label">
+          <strong>Sem 2</strong>
+          18–22 mayo
+        </div>
+        <div class="semana-pills">
+          <span class="pill active">Calendario: posts sem 2</span>
+          <span class="pill active">Videos: 2 restantes</span>
+          <span class="pill active">Caso de éxito: edición y aprobación</span>
+          <span class="pill active">Sales Nav: aprobación de mensajes con Martín</span>
+          <span class="pill active">Web: draft homepage</span>
+          <span class="pill active">Referidos: redactar mensajes de fidelización</span>
+        </div>
+      </div>
+      <div class="semana-row">
+        <div class="semana-label">
+          <strong>Sem 3</strong>
+          26–29 mayo
+        </div>
+        <div class="semana-pills">
+          <span class="pill active">Calendario: posts sem 3</span>
+          <span class="pill active">Caso de éxito: subido a web + publicación</span>
+          <span class="pill active">Sales Nav: 10 mensajes enviados</span>
+          <span class="pill active">Web: aprobación Martín y Emilio</span>
+          <span class="pill active">Referidos: sistema documentado</span>
+          <span class="pill">Reporte cierre mayo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORTE MODELO -->
+  <div class="fade-5">
+    <div class="section-title">Reporte · Modelo de cada viernes</div>
+
+    <div class="reporte">
+      <div class="reporte-header">
+        <span class="reporte-title">Ejemplo: Semana 1 · 11–15 de mayo</span>
+        <span class="reporte-sub">Máx. 10 min de lectura</span>
+      </div>
+
+      <table class="rep-table">
+        <thead>
+          <tr>
+            <th style="width:22%">Objetivo</th>
+            <th style="width:22%">Meta del mes</th>
+            <th style="width:18%">Estado</th>
+            <th style="width:10%">Avance</th>
+            <th style="width:28%">Próximo paso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01 · Calendario</td>
+            <td>100% posts</td>
+            <td><span class="dot d-green"></span>En curso<span class="badge b-ok">ok</span></td>
+            <td>60%</td>
+            <td>3 posts sem. siguiente</td>
+          </tr>
+          <tr>
+            <td>02 · Caso de éxito</td>
+            <td>1 publicado</td>
+            <td><span class="dot d-cyan"></span>En redacción<span class="badge b-wip">wip</span></td>
+            <td>40%</td>
+            <td>Enviar borrador a Martín</td>
+          </tr>
+          <tr>
+            <td>03 · Videos</td>
+            <td>5 listos</td>
+            <td><span class="dot d-cyan"></span>En edición<span class="badge b-wip">wip</span></td>
+            <td>40%</td>
+            <td>Video 3 en CapCut</td>
+          </tr>
+          <tr>
+            <td>04 · Sales Nav</td>
+            <td>30 perfiles + 10 msgs</td>
+            <td><span class="dot d-green"></span>Lista armada<span class="badge b-ok">ok</span></td>
+            <td>50%</td>
+            <td>Primeros 5 mensajes</td>
+          </tr>
+          <tr>
+            <td>05 · Web</td>
+            <td>Arq. + home aprobada</td>
+            <td><span class="dot d-amber"></span>Bloqueado<span class="badge b-block">espera</span></td>
+            <td>20%</td>
+            <td>🔴 Necesito feedback Martín</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rep-bloques">
+        <div class="rep-bloque">
+          <div class="rep-bloque-label">Avancé esta semana</div>
+          <ul>
+            <li>3 posts publicados</li>
+            <li>2 videos editados</li>
+            <li>Lista Sales Nav completa</li>
+          </ul>
+        </div>
+        <div class="rep-bloque warn">
+          <div class="rep-bloque-label">Qué bloqueó o cambió</div>
+          <ul>
+            <li>Home web: espera textos aprobados</li>
+            <li>Caso de éxito: pendiente ok del cliente</li>
+          </ul>
+        </div>
+        <div class="rep-bloque">
+          <div class="rep-bloque-label">Necesito de Martín / Emilio</div>
+          <ul>
+            <li>Aprobar arquitectura web</li>
+            <li>Confirmar cliente para caso de éxito</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTNOTE -->
+  <div class="footnote fade-5">
+    <strong>Nota sobre la web:</strong> La meta de mayo es arquitectura aprobada + home lista, no la web completa. Rehacer todo requiere decisiones de negocio, textos aprobados e iteraciones reales. El resto de las secciones entran en junio una vez que la home esté publicada y validada.
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-brand">Rocking · Marketing · Mayo 2026</span>
+    <span class="footer-url">wearerocking.it</span>
+  </footer>
+
+</div>
+
+<script>
+  function toggleCard(card) {
+    card.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
