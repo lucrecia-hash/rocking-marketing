@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte Semanal · Semana 1 · Mayo 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1D1D1D;
+    color: #B8B8B8;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 48px 0;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(168, 220, 242, 0.15);
+  }
+
+  .header-logo img {
+    height: 32px;
+  }
+
+  .header-meta {
+    text-align: right;
+  }
+
+  .header-meta .label {
+    font-size: 12px;
+    color: #6E6E6E;
+    font-family: 'Titillium Web', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .header-meta .value {
+    font-size: 13px;
+    color: #8C8C8C;
+    margin-top: 2px;
+  }
+
+  /* TITLE BLOCK */
+  .title-block {
+    margin-bottom: 48px;
+  }
+
+  .title-block .eyebrow {
+    font-size: 12px;
+    color: #3DBDEE;
+    font-family: 'Titillium Web', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .title-block h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .title-block h1 span {
+    color: #3DBDEE;
+  }
+
+  .title-block .subtitle {
+    font-size: 14px;
+    color: #6E6E6E;
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #3DBDEE;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(168, 220, 242, 0.12);
+  }
+
+  /* OBJECTIVES TABLE */
+  .objectives {
+    margin-bottom: 48px;
+  }
+
+  .obj-row {
+    display: grid;
+    grid-template-columns: 28px 1fr 110px 80px;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(168, 220, 242, 0.08);
+  }
+
+  .obj-row:last-child {
+    border-bottom: none;
+  }
+
+  .obj-num {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #3DBDEE;
+    opacity: 0.6;
+  }
+
+  .obj-name {
+    font-size: 14px;
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  .obj-note {
+    font-size: 12px;
+    color: #6E6E6E;
+    margin-top: 3px;
+    font-weight: 400;
+  }
+
+  .obj-status {
+    font-size: 12px;
+    color: #8C8C8C;
+  }
+
+  .obj-pct {
+    text-align: right;
+  }
+
+  .pct-value {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .pct-value.green { color: #2ECC9B; }
+  .pct-value.yellow { color: #FACC15; }
+  .pct-value.cyan { color: #3DBDEE; }
+  .pct-value.gray { color: #6E6E6E; }
+
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-top: 4px;
+  }
+
+  .tag-change {
+    background: rgba(250, 204, 21, 0.08);
+    color: #FACC15;
+    border: 1px solid rgba(250, 204, 21, 0.2);
+  }
+
+  .tag-ok {
+    background: rgba(46, 204, 155, 0.08);
+    color: #2ECC9B;
+    border: 1px solid rgba(46, 204, 155, 0.2);
+  }
+
+  /* BLOCKS */
+  .blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .block {
+    background: #2A2A28;
+    border: 1px solid rgba(168, 220, 242, 0.12);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .block.full {
+    grid-column: 1 / -1;
+  }
+
+  .block-label {
+    font-size: 10px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3DBDEE;
+    margin-bottom: 14px;
+  }
+
+  .block ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .block ul li {
+    font-size: 14px;
+    color: #B8B8B8;
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .block ul li::before {
+    content: '•';
+    color: #3DBDEE;
+    position: absolute;
+    left: 0;
+  }
+
+  /* FRAMEWORK SECTION */
+  .framework {
+    margin-bottom: 48px;
+  }
+
+  .fw-intro {
+    font-size: 14px;
+    color: #8C8C8C;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  .fw-change-tag {
+    display: inline-block;
+    background: rgba(61, 189, 238, 0.08);
+    border: 1px solid rgba(61, 189, 238, 0.2);
+    color: #3DBDEE;
+    font-size: 11px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+
+  .fw-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 24px;
+  }
+
+  /* CLASSIFICATION TABLE */
+  .cat-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+  }
+
+  .cat-table th {
+    font-size: 10px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6E6E6E;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(168, 220, 242, 0.1);
+  }
+
+  .cat-table td {
+    padding: 12px 12px;
+    font-size: 13px;
+    color: #B8B8B8;
+    border-bottom: 1px solid rgba(168, 220, 242, 0.06);
+    vertical-align: top;
+  }
+
+  .cat-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .cat-a { color: #2ECC9B; font-weight: 700; font-family: 'Raleway', sans-serif; }
+  .cat-b { color: #3DBDEE; font-weight: 700; font-family: 'Raleway', sans-serif; }
+  .cat-c { color: #6E6E6E; font-weight: 700; font-family: 'Raleway', sans-serif; }
+
+  /* MOMENTOS */
+  .moments {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 24px;
+  }
+
+  .moment {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    position: relative;
+  }
+
+  .moment-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .moment-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(61, 189, 238, 0.1);
+    border: 1.5px solid #3DBDEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #3DBDEE;
+    flex-shrink: 0;
+  }
+
+  .moment-connector {
+    width: 1px;
+    flex: 1;
+    background: rgba(168, 220, 242, 0.12);
+    margin-top: 6px;
+    min-height: 20px;
+  }
+
+  .moment:last-child .moment-connector {
+    display: none;
+  }
+
+  .moment-content {
+    padding-top: 4px;
+    padding-bottom: 16px;
+  }
+
+  .moment-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+
+  .moment-desc {
+    font-size: 13px;
+    color: #8C8C8C;
+    line-height: 1.5;
+  }
+
+  /* QUESTIONS */
+  .questions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .question-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #2A2A28;
+    border: 1px solid rgba(168, 220, 242, 0.08);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+
+  .q-num {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #3DBDEE;
+    flex-shrink: 0;
+    margin-top: 1px;
+    min-width: 18px;
+  }
+
+  .q-text {
+    font-size: 13px;
+    color: #B8B8B8;
+    line-height: 1.5;
+  }
+
+  .fw-note {
+    background: rgba(250, 204, 21, 0.06);
+    border: 1px solid rgba(250, 204, 21, 0.15);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: #FACC15;
+    margin-top: 16px;
+  }
+
+  /* NEEDS BLOCK */
+  .needs-block {
+    background: #2A2A28;
+    border: 1px solid rgba(168, 220, 242, 0.12);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 48px;
+  }
+
+  .needs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .need-item .need-name {
+    font-size: 11px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #3DBDEE;
+    margin-bottom: 6px;
+  }
+
+  .need-item ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .need-item ul li {
+    font-size: 13px;
+    color: #B8B8B8;
+    padding: 4px 0;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .need-item ul li::before {
+    content: '•';
+    color: #3DBDEE;
+    position: absolute;
+    left: 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding-top: 32px;
+    border-top: 1px solid rgba(168, 220, 242, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    color: #6E6E6E;
+  }
+
+  .footer-right {
+    font-size: 11px;
+    color: #6E6E6E;
+    text-align: right;
+  }
+
+  .footer-right a {
+    color: #3DBDEE;
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .header { flex-direction: column; gap: 16px; }
+    .header-meta { text-align: left; }
+    .obj-row { grid-template-columns: 24px 1fr 70px; }
+    .obj-status { display: none; }
+    .blocks { grid-template-columns: 1fr; }
+    .needs-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-logo">
+      <img src="https://wearerocking.it/rocking/Rocking---version-color-positivo-RGB_R.png" alt="Rocking" />
+    </div>
+    <div class="header-meta">
+      <div class="label">Reporte semanal</div>
+      <div class="value">Semana 1 · 11–15 mayo 2026</div>
+      <div class="value">Preparado por Lucrecia</div>
+    </div>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <div class="eyebrow">Marketing · Mayo 2026</div>
+    <h1>Semana 1<span>.</span></h1>
+    <div class="subtitle">Estado de objetivos · avances · cambios · próximos pasos</div>
+  </div>
+
+  <!-- OBJECTIVES -->
+  <div class="objectives">
+    <div class="section-title">Estado de objetivos</div>
+
+    <div class="obj-row">
+      <div class="obj-num">01</div>
+      <div>
+        <div class="obj-name">Calendario de contenidos</div>
+        <div class="obj-note">Posts sem 1 en curso</div>
+      </div>
+      <div class="obj-status">En progreso</div>
+      <div class="obj-pct"><span class="pct-value yellow">50%</span></div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-num">02</div>
+      <div>
+        <div class="obj-name">Caso de éxito · Eurotur</div>
+        <div class="obj-note">Copy LinkedIn redactado</div>
+      </div>
+      <div class="obj-status">✓ Completado</div>
+      <div class="obj-pct"><span class="pct-value green">100%</span></div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-num">03</div>
+      <div>
+        <div class="obj-name">Videos editados</div>
+        <div class="obj-note">2 de 4 videos · sem 1 completa</div>
+      </div>
+      <div class="obj-status">✓ Completado</div>
+      <div class="obj-pct"><span class="pct-value green">100%</span></div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-num">04</div>
+      <div>
+        <div class="obj-name">Sales Navigator → Agente IA</div>
+        <div class="obj-note">Objetivo reformulado · ver bloque cambios</div>
+        <span class="tag tag-change">Cambio acordado</span>
+      </div>
+      <div class="obj-status">Reformulado</div>
+      <div class="obj-pct"><span class="pct-value yellow">—</span></div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-num">05</div>
+      <div>
+        <div class="obj-name">Web · arquitectura + home</div>
+        <div class="obj-note">Primer draft enviado · contenidos pasan a sem 2</div>
+      </div>
+      <div class="obj-status">En progreso</div>
+      <div class="obj-pct"><span class="pct-value yellow">50%</span></div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-num">06</div>
+      <div>
+        <div class="obj-name">Sistema de referidos</div>
+        <div class="obj-note">Framework v2 documentado · listo para validar</div>
+        <span class="tag tag-ok">Listo</span>
+      </div>
+      <div class="obj-status">✓ Completado</div>
+      <div class="obj-pct"><span class="pct-value green">100%</span></div>
+    </div>
+
+  </div>
+
+  <!-- BLOCKS -->
+  <div class="blocks">
+    <div class="block">
+      <div class="block-label">Avancé esta semana</div>
+      <ul>
+        <li>Copy caso de éxito Eurotur · listo para aprobación y publicación sem 3</li>
+        <li>2 videos editados · sem 1 completa</li>
+        <li>Framework de referidos v2 documentado con cambio NPS → Rocking Review</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-label">Qué bloqueó o cambió</div>
+      <ul>
+        <li>Calendario al 50% · se realizaron posteos en los 3 perfiles, no los plasmados en el calendario</li>
+        <li>Sales Navigator reformulado: se construye un agente IA que prospecte y arme mensajes · activo a fines de mayo · acordado con Martín</li>
+        <li>Contenidos web pasan a sem 2 · arquitectura ya enviada</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- NECESITO DE -->
+  <div class="needs-block">
+    <div class="section-title">Necesito de Martín y Emilio</div>
+    <ul style="list-style:none; padding:0; margin-top:4px;">
+      <li style="font-size:14px; color:#B8B8B8; padding:5px 0; padding-left:16px; position:relative; line-height:1.5;"><span style="color:#3DBDEE; position:absolute; left:0;">•</span>Validar framework de referidos v2</li>
+      <li style="font-size:14px; color:#B8B8B8; padding:5px 0; padding-left:16px; position:relative; line-height:1.5;"><span style="color:#3DBDEE; position:absolute; left:0;">•</span>Confirmar scope y responsable del agente prospectador</li>
+      <li style="font-size:14px; color:#B8B8B8; padding:5px 0; padding-left:16px; position:relative; line-height:1.5;"><span style="color:#3DBDEE; position:absolute; left:0;">•</span>Feedback web</li>
+    </ul>
+  </div>
+
+  <!-- FRAMEWORK V2 -->
+  <div class="framework">
+    <div class="section-title">Framework de referidos · v2</div>
+
+    <div class="fw-change-tag">Para validar con Martín y Emilio</div>
+
+    <p class="fw-intro">El 90% de los clientes de Rocking llegaron por referidos. El objetivo es formalizar este canal con enfoque de fidelización.</p>
+
+    <p class="fw-intro" style="margin-top: -8px;">El NPS se reemplaza por el <strong style="color:#FFFFFF;">Rocking Review</strong> — una entrevista profunda que se envía al cierre de cada proyecto. A futuro, desde Estima se envía automáticamente. El NPS se retoma más adelante.</p>
+
+    <div class="fw-subtitle">Criterio de clasificación</div>
+
+    <table class="cat-table">
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th>Criterio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cat-a">A · Promotor activo</span></td>
+          <td>Respondió positivamente en proceso + valor + mencionó a alguien concreto para recomendar</td>
+        </tr>
+        <tr>
+          <td><span class="cat-b">B · Satisfecho sin red activa</span></td>
+          <td>Buena experiencia pero no mencionó a nadie o tiene dudas sobre recomendar</td>
+        </tr>
+        <tr>
+          <td><span class="cat-c">C · Sin continuidad</span></td>
+          <td>No respondió, experiencia negativa, o proyecto cerrado sin relación activa</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="fw-subtitle">Los 3 momentos del referido</div>
+
+    <div class="moments">
+      <div class="moment">
+        <div class="moment-line">
+          <div class="moment-dot">1</div>
+          <div class="moment-connector"></div>
+        </div>
+        <div class="moment-content">
+          <div class="moment-title">Durante la ejecución</div>
+          <div class="moment-desc">Construir confianza. Avisar que al cierre habrá un Rocking Review, que se documentará el caso de éxito y que se pedirá testimonio para subir en la web.</div>
+        </div>
+      </div>
+      <div class="moment">
+        <div class="moment-line">
+          <div class="moment-dot">2</div>
+          <div class="moment-connector"></div>
+        </div>
+        <div class="moment-content">
+          <div class="moment-title">Cierre del proyecto</div>
+          <div class="moment-desc">Enviar Rocking Review. Clasificar en A/B/C según respuestas. Si es A, abrir conversación de fidelización.</div>
+        </div>
+      </div>
+      <div class="moment">
+        <div class="moment-line">
+          <div class="moment-dot">3</div>
+          <div class="moment-connector"></div>
+        </div>
+        <div class="moment-content">
+          <div class="moment-title">1–2 meses post-cierre</div>
+          <div class="moment-desc">Seguimiento personalizado a Categoría A. Compartir caso de éxito si aplica.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fw-subtitle">Rocking Review · Preguntas base</div>
+
+    <div class="questions">
+      <div class="question-row">
+        <div class="q-num">01</div>
+        <div class="q-text">¿Cómo viviste el proceso de trabajo con Rocking?</div>
+      </div>
+      <div class="question-row">
+        <div class="q-num">02</div>
+        <div class="q-text">¿Qué cambiarías o mejorarías de la experiencia?</div>
+      </div>
+      <div class="question-row">
+        <div class="q-num">03</div>
+        <div class="q-text">¿Recomendarías Rocking a alguien de tu red? ¿A quién le vendría bien?</div>
+      </div>
+    </div>
+
+    <div class="fw-note">
+      El Rocking Review en HTML interactivo se construye en Semana 2. La conexión automática a Notion se implementa en junio.
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Marketing · Rocking · Mayo 2026</div>
+    <div class="footer-right"><a href="https://wearerocking.it">wearerocking.it</a></div>
+  </div>
+
+</div>
+</body>
+</html>
