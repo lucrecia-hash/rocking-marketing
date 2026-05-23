@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte Semana 2 · Mayo 2026 · Rocking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700;800&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cyan:        #00D2FF;
+    --cyan-dim:    #3DBDEE;
+    --dark:        #0D0D0D;
+    --dark2:       #1D1D1B;
+    --dark3:       #252523;
+    --dark4:       #2E2E2C;
+    --text:        #F0F0EE;
+    --text-muted:  #888884;
+    --text-dim:    #444442;
+    --border:      rgba(0,210,255,0.13);
+    --border-mid:  rgba(0,210,255,0.25);
+    --border-hi:   rgba(0,210,255,0.40);
+    --green:       #3ECF8E;
+    --amber:       #F59E0B;
+    --red:         #EF4444;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,210,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,210,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-1 { animation: fadeUp 0.6s ease both; }
+  .fade-2 { animation: fadeUp 0.6s 0.1s ease both; }
+  .fade-3 { animation: fadeUp 0.6s 0.2s ease both; }
+  .fade-4 { animation: fadeUp 0.6s 0.3s ease both; }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+
+  .periodo-pill {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--dark);
+    background: var(--cyan);
+    padding: 5px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .header h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .header h1 strong {
+    font-weight: 800;
+    color: var(--cyan);
+    display: block;
+  }
+
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* TABLA */
+  .rep-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 1.5rem;
+    table-layout: fixed;
+  }
+
+  .rep-table th {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 0.5px solid var(--border-mid);
+    font-weight: 400;
+  }
+
+  .rep-table td {
+    padding: 10px 10px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.03);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .rep-table tr:last-child td { border-bottom: none; }
+
+  .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .d-green  { background: var(--green); }
+  .d-cyan   { background: var(--cyan); }
+  .d-amber  { background: var(--amber); }
+  .d-gray   { background: var(--text-dim); }
+
+  .badge {
+    display: inline-block;
+    font-size: 9px;
+    padding: 2px 7px;
+    margin-left: 5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .b-ok    { background: rgba(62,207,142,0.12); color: var(--green); }
+  .b-wip   { background: rgba(0,210,255,0.10);  color: var(--cyan-dim); }
+  .b-block { background: rgba(245,158,11,0.12); color: var(--amber); }
+  .b-sin   { background: rgba(255,255,255,0.05); color: var(--text-dim); }
+
+  /* BLOQUES */
+  .rep-bloques {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .rep-bloque {
+    background: var(--dark3);
+    padding: 1rem;
+  }
+
+  .rep-bloque-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyan-dim);
+    margin-bottom: 0.625rem;
+    font-weight: 600;
+  }
+
+  .rep-bloque.warn .rep-bloque-label { color: var(--amber); }
+  .rep-bloque.need .rep-bloque-label { color: var(--green); }
+
+  .rep-bloque ul { padding-left: 1rem; }
+  .rep-bloque li {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+  /* NOTA */
+  .nota {
+    background: var(--dark2);
+    border-left: 2px solid var(--border-mid);
+    padding: 1rem 1.25rem;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .nota strong { color: var(--cyan-dim); font-weight: 600; }
+
+  /* REPORTE CONTAINER */
+  .reporte {
+    background: var(--dark2);
+    border: 0.5px solid var(--border-hi);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .reporte-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .reporte-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+  }
+
+  .reporte-sub { font-size: 11px; color: var(--text-muted); }
+
+  /* PROXIMA SEMANA */
+  .proxima {
+    background: var(--dark2);
+    border: 0.5px solid var(--border);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .proxima-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .proxima-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .proxima-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: var(--dark3);
+    padding: 0.75rem 1rem;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .proxima-num {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    color: var(--cyan);
+    min-width: 20px;
+    padding-top: 1px;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .footer-url { font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 620px) {
+    .rep-bloques      { grid-template-columns: 1fr; }
+    .proxima-grid     { grid-template-columns: 1fr; }
+    .header-top       { flex-direction: column; gap: 0.75rem; }
+    .reporte-header   { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header fade-1">
+    <div class="header-top">
+      <div class="logo">Marketing</div>
+      <div class="periodo-pill">18–22 Mayo 2026</div>
+    </div>
+    <h1>Reporte semanal<strong>Semana 2</strong></h1>
+    <p class="header-meta">Preparado por Lucrecia · 22/05/2026 · wearerocking.it</p>
+  </header>
+
+  <!-- REPORTE -->
+  <div class="fade-2">
+    <div class="section-title">Estado por objetivo</div>
+
+    <div class="reporte">
+      <div class="reporte-header">
+        <span class="reporte-title">Semana 2 · 18–22 de mayo</span>
+        <span class="reporte-sub"></span>
+      </div>
+
+      <table class="rep-table">
+        <thead>
+          <tr>
+            <th style="width:22%">Objetivo</th>
+            <th style="width:22%">Meta del mes</th>
+            <th style="width:18%">Estado</th>
+            <th style="width:10%">Avance</th>
+            <th style="width:28%">Próximo paso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01 · Calendario</td>
+            <td>100% posts publicados</td>
+            <td><span class="dot d-green"></span>Desarrollo de contenidos nuevos<span class="badge b-ok">ok</span></td>
+            <td>75%</td>
+            <td>Posts sem 3 + cierre.</td>
+          </tr>
+          <tr>
+            <td>02 · Caso de éxito</td>
+            <td>1 publicado en Sem 3</td>
+            <td><span class="dot d-green"></span>Copy aprobado<span class="badge b-ok">ok</span></td>
+            <td>75%</td>
+            <td>Video · aprobación Sem 3.</td>
+          </tr>
+          <tr>
+            <td>03 · Videos</td>
+            <td>4 videos editados</td>
+            <td><span class="dot d-cyan"></span>2/4 · en producción<span class="badge b-wip">wip</span></td>
+            <td>50%</td>
+            <td>Listos para Sem 3.</td>
+          </tr>
+          <tr>
+            <td>04 · Agente IA</td>
+            <td>Activo a fines de mayo</td>
+            <td><span class="dot d-gray"></span>Sin avances<span class="badge b-sin">pendiente</span></td>
+            <td>10%</td>
+            <td>Definir scope.</td>
+          </tr>
+          <tr>
+            <td>05 · Web</td>
+            <td>Arq. + home aprobada</td>
+            <td><span class="dot d-cyan"></span>Contenidos enviados<span class="badge b-wip">espera ok</span></td>
+            <td>50%</td>
+            <td>Aprobación Martín y Emilio.</td>
+          </tr>
+          <tr>
+            <td>06 · Referidos</td>
+            <td>Framework documentado</td>
+            <td><span class="dot d-amber"></span>Proceso reformulado<span class="badge b-wip">en curso</span></td>
+            <td>60%</td>
+            <td>Documentar nuevo proceso. Validar con Emilio y Fran.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="rep-bloques">
+        <div class="rep-bloque">
+          <div class="rep-bloque-label">Avancé esta semana</div>
+          <ul>
+            <li>Contenidos nuevos desarrollados para semana 3.</li>
+            <li>Copy caso de éxito Eurotur aprobado.</li>
+            <li>Contenidos web cerrados. Atu los itera en WP. Landing transformación IA actualizada.</li>
+            <li>Programa de referidos reformulado.</li>
+          </ul>
+        </div>
+        <div class="rep-bloque warn">
+          <div class="rep-bloque-label">Qué bloqueó o cambió</div>
+          <ul>
+            <li>Videos 3 y 4: editados para aprobar a Sem 3.</li>
+            <li>Agente IA: sin avances esta semana.</li>
+            <li>Referidos: proceso reformulado. Documentar y acordar con Emilio y Fran.</li>
+            <li>Web: Atu itera y en conjunto volcamos los cambios en WordPress.</li>
+          </ul>
+        </div>
+        <div class="rep-bloque need">
+          <div class="rep-bloque-label">Necesito de Martín / Emilio</div>
+          <ul>
+            <li>Aprobar contenidos web.</li>
+            <li>Aprobar contenidos para LinkedIn semana 3.</li>
+            <li>Aprobar video caso de éxito Eurotur.</li>
+            <li>Credenciales de Youtube.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTA REFERIDOS -->
+  <div class="fade-3">
+    <div class="nota">
+      <strong>Nota · Referidos:</strong> El proceso fue reformulado esta semana. El NPS original fue reemplazado por el <strong>Rocking Review</strong> — una entrevista de cierre más profunda y personalizada. La documentación del nuevo proceso se completa en Sem 3.
+    </div>
+  </div>
+
+  <!-- PRÓXIMA SEMANA -->
+  <div class="fade-3">
+    <div class="section-title">Foco Semana 3 · 26–29 mayo</div>
+
+    <div class="proxima">
+      <div class="proxima-title">Compromisos de cierre de mes</div>
+      <div class="proxima-grid">
+        <div class="proxima-item">
+          <span class="proxima-num">01</span>
+          <span>Posts sem 3 publicados + cierre del calendario.</span>
+        </div>
+        <div class="proxima-item">
+          <span class="proxima-num">02</span>
+          <span>Caso de éxito: video aprobado + publicación en LinkedIn y web.</span>
+        </div>
+        <div class="proxima-item">
+          <span class="proxima-num">03</span>
+          <span>Videos 3 y 4 editados. En stock para publicar.</span>
+        </div>
+        <div class="proxima-item">
+          <span class="proxima-num">04</span>
+          <span>Agente IA: scope definido + construcción iniciada.</span>
+        </div>
+        <div class="proxima-item">
+          <span class="proxima-num">05</span>
+          <span>Web: aprobación Martín y Emilio + web Rocking actualizada.</span>
+        </div>
+        <div class="proxima-item">
+          <span class="proxima-num">06</span>
+          <span>Referidos: nuevo proceso documentado y listo para ejecutar.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer fade-4">
+    <span class="footer-brand">Rocking · Marketing · Mayo 2026</span>
+    <span class="footer-url">wearerocking.it</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
