@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte de cierre · Mayo 2026 · Rocking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cyan:        #00D2FF;
+    --cyan-dim:    #3DBDEE;
+    --dark:        #0D0D0D;
+    --dark2:       #1D1D1B;
+    --dark3:       #252523;
+    --dark4:       #2E2E2C;
+    --text:        #F0F0EE;
+    --text-muted:  #888884;
+    --text-dim:    #444442;
+    --border:      rgba(0,210,255,0.13);
+    --border-mid:  rgba(0,210,255,0.25);
+    --border-hi:   rgba(0,210,255,0.40);
+    --green:       #3ECF8E;
+    --amber:       #F59E0B;
+    --red:         #EF4444;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,210,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,210,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-1 { animation: fadeUp 0.6s ease both; }
+  .fade-2 { animation: fadeUp 0.6s 0.1s ease both; }
+  .fade-3 { animation: fadeUp 0.6s 0.2s ease both; }
+  .fade-4 { animation: fadeUp 0.6s 0.3s ease both; }
+  .fade-5 { animation: fadeUp 0.6s 0.4s ease both; }
+
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+  .logo {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+  .periodo-pill {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--dark);
+    background: var(--cyan);
+    padding: 5px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .header h1 strong {
+    font-weight: 800;
+    color: var(--cyan);
+    display: block;
+  }
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── RESUMEN STRIP ── */
+  .resumen {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+  .stat {
+    background: var(--dark2);
+    border: 0.5px solid var(--border);
+    border-top: 2px solid var(--border-mid);
+    padding: 1rem 0.875rem;
+    text-align: center;
+  }
+  .stat.ok    { border-top-color: var(--green); }
+  .stat.part  { border-top-color: var(--amber); }
+  .stat.block { border-top-color: var(--red); }
+  .stat.ref   { border-top-color: var(--cyan); }
+  .stat-num {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── TABLA ── */
+  .tabla-wrap { margin-bottom: 3rem; }
+  .rep-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    table-layout: fixed;
+  }
+  .rep-table th {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 0.5px solid var(--border-mid);
+    font-weight: 400;
+  }
+  .rep-table td {
+    padding: 12px 10px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.03);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .rep-table tr:last-child td { border-bottom: none; }
+  .obj-cell { color: var(--cyan-dim); font-weight: 500; }
+
+  .dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .d-green { background: var(--green); }
+  .d-cyan  { background: var(--cyan); }
+  .d-amber { background: var(--amber); }
+  .d-red   { background: var(--red); }
+
+  .badge {
+    display: inline-block;
+    font-size: 9px;
+    padding: 2px 7px;
+    margin-top: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .b-ok    { background: rgba(62,207,142,0.12); color: var(--green); }
+  .b-part  { background: rgba(245,158,11,0.12); color: var(--amber); }
+  .b-block { background: rgba(239,68,68,0.12);  color: var(--red); }
+  .b-ref   { background: rgba(0,210,255,0.10);  color: var(--cyan-dim); }
+
+  /* ── RETRO BLOQUES ── */
+  .retro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-bottom: 3rem;
+  }
+  .retro-block {
+    background: var(--dark2);
+    border: 0.5px solid var(--border);
+    padding: 1.25rem 1.375rem;
+  }
+  .retro-block.warn { border-left: 2px solid var(--amber); }
+  .retro-block.next { border-left: 2px solid var(--cyan); }
+  .retro-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyan-dim);
+    margin-bottom: 0.875rem;
+    font-weight: 500;
+  }
+  .retro-block.warn .retro-label { color: var(--amber); }
+  .retro-block ul { padding-left: 1rem; }
+  .retro-block li {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 7px;
+    line-height: 1.55;
+  }
+  .retro-block li strong { color: var(--text); font-weight: 500; }
+
+  /* ── NECESITO ── */
+  .necesito {
+    background: var(--dark2);
+    border: 0.5px solid var(--border-hi);
+    border-left: 3px solid var(--cyan);
+    padding: 1.5rem 1.625rem;
+    margin-bottom: 2rem;
+  }
+  .necesito-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.875rem;
+  }
+  .necesito ul { padding-left: 1rem; }
+  .necesito li {
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.55;
+  }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--dark2);
+    border-left: 2px solid var(--border-mid);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .footnote strong { color: var(--cyan-dim); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .footer-url { font-size: 11px; color: var(--text-dim); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 620px) {
+    .resumen    { grid-template-columns: repeat(2, 1fr); }
+    .retro      { grid-template-columns: 1fr; }
+    .header-top { flex-direction: column; gap: 0.75rem; }
+    .rep-table  { font-size: 11px; }
+    .rep-table th:nth-child(2), .rep-table td:nth-child(2) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header fade-1">
+    <div class="header-top">
+      <div class="logo">Marketing</div>
+      <div class="periodo-pill">Cierre · 11–31 Mayo 2026</div>
+    </div>
+    <h1>Reporte de cierre<strong>Mayo 2026</strong></h1>
+    <p class="header-meta">Preparado por Lucrecia · 30/05/2026 · Retrospectiva de mes · 6 objetivos · wearerocking.it</p>
+  </header>
+
+  <!-- RESUMEN -->
+  <div class="resumen fade-2">
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Objetivos</div></div>
+    <div class="stat ok"><div class="stat-num">3</div><div class="stat-label">Cumplidos</div></div>
+    <div class="stat part"><div class="stat-num">1</div><div class="stat-label">Parcial</div></div>
+    <div class="stat block"><div class="stat-num">1</div><div class="stat-label">Bloqueado</div></div>
+    <div class="stat ref"><div class="stat-num">1</div><div class="stat-label">Reformulado</div></div>
+  </div>
+
+  <!-- ESTADO FINAL -->
+  <div class="tabla-wrap fade-3">
+    <div class="section-title">Estado final por objetivo</div>
+    <table class="rep-table">
+      <thead>
+        <tr>
+          <th style="width:20%">Objetivo</th>
+          <th style="width:18%">Meta del mes</th>
+          <th style="width:32%">Estado final</th>
+          <th style="width:13%">Resultado</th>
+          <th style="width:17%">Próximo paso · junio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="obj-cell">01 · Calendario</td>
+          <td>100% posts publicados</td>
+          <td>Posts publicados en LinkedIn. Pendiente el posteo del caso Eurotur, atado a la aprobación del cliente.</td>
+          <td><span class="dot d-amber"></span>Parcial<br><span class="badge b-part">en cierre</span></td>
+          <td>Publicar posteo Eurotur al aprobar el cliente.</td>
+        </tr>
+        <tr>
+          <td class="obj-cell">02 · Caso de éxito</td>
+          <td>1 publicado</td>
+          <td>Copy y videos de Eurotur finalizados. Falta aprobación del cliente.</td>
+          <td><span class="dot d-red"></span>Bloqueado<br><span class="badge b-block">cliente</span></td>
+          <td>Obtener ok del cliente y publicar en LinkedIn + web.</td>
+        </tr>
+        <tr>
+          <td class="obj-cell">03 · Videos</td>
+          <td>4 videos editados</td>
+          <td>Los 4 videos quedaron editados y listos para publicar.</td>
+          <td><span class="dot d-green"></span>Cumplido<br><span class="badge b-ok">4/4</span></td>
+          <td>Publicar según calendario de contenidos.</td>
+        </tr>
+        <tr>
+          <td class="obj-cell">04 · Lead gen (LGM)</td>
+          <td>Activo a fin de mayo</td>
+          <td>Reformulado a lead generation vía la tool LGM. Mensajes por vertical preparados. La ejecución arranca en junio.</td>
+          <td><span class="dot d-cyan"></span>Reformulado<br><span class="badge b-ref">definido</span></td>
+          <td>Arrancar ejecución con LGM por vertical.</td>
+        </tr>
+        <tr>
+          <td class="obj-cell">05 · Web</td>
+          <td>Arq. + home aprobada</td>
+          <td>Contenidos y diseño aprobados por Martín y Emilio. En fase de iteración y ajustes con Atu.</td>
+          <td><span class="dot d-green"></span>Cumplido<br><span class="badge b-ok">aprobado</span></td>
+          <td>Cerrar iteración con Atu y publicar.</td>
+        </tr>
+        <tr>
+          <td class="obj-cell">06 · Referidos</td>
+          <td>Framework documentado</td>
+          <td>Proceso documentado bajo el nuevo formato Rocking Review (reemplaza al NPS).</td>
+          <td><span class="dot d-green"></span>Cumplido<br><span class="badge b-ok">doc.</span></td>
+          <td>Activar programa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RETROSPECTIVA -->
+  <div class="fade-4">
+    <div class="section-title">Retrospectiva del mes</div>
+    <div class="retro">
+
+      <div class="retro-block">
+        <div class="retro-label">Logros</div>
+        <ul>
+          <li>Calendario de contenidos ejecutado en LinkedIn.</li>
+          <li><strong>4 videos</strong> editados y listos para publicar.</li>
+          <li>Web: contenidos y diseño <strong>aprobados</strong>; en iteración con Atu.</li>
+          <li>Caso Eurotur: copy y material finalizados.</li>
+          <li>Programa de referidos documentado bajo <strong>Rocking Review</strong>.</li>
+          <li>OBJ 04 redefinido a lead gen vía LGM, con mensajes por vertical listos.</li>
+        </ul>
+      </div>
+
+      <div class="retro-block">
+        <div class="retro-label">Qué cambió este mes</div>
+        <ul>
+          <li><strong>OBJ 04:</strong> outbound manual en Sales Navigator → lead generation vía tool LGM. Ejecución: junio.</li>
+          <li><strong>OBJ 06:</strong> NPS → Rocking Review (entrevista de cierre más profunda).</li>
+          <li><strong>Hito referidos:</strong> primera reunión generada, de agosto → junio.</li>
+        </ul>
+      </div>
+
+      <div class="retro-block warn">
+        <div class="retro-label">Qué quedó bloqueado o pendiente</div>
+        <ul>
+          <li><strong>Caso Eurotur:</strong> aprobación del cliente pendiente. Bloquea la publicación (OBJ 02) y el posteo del calendario (OBJ 01).</li>
+        </ul>
+      </div>
+
+      <div class="retro-block next">
+        <div class="retro-label">Foco junio</div>
+        <ul>
+          <li>Publicar caso Eurotur apenas el cliente apruebe.</li>
+          <li>Arrancar lead generation con LGM por vertical.</li>
+          <li>Cerrar iteración web con Atu y publicar.</li>
+          <li>Ejecutar programa cuando finalice un proyecto.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NECESITO -->
+  <div class="necesito fade-5">
+    <div class="necesito-label">Necesito de Martín / Emilio</div>
+    <ul>
+      <li>Credenciales de LinkedIn para configurar LGM.</li>
+      <li>Contenidos web: qué roles van para cada uno. Aprobación final.</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-brand">Rocking · Marketing · Cierre Mayo 2026</span>
+    <span class="footer-url">wearerocking.it</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
