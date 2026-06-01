@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Marketing · Junio 2026 · Rocking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cyan:        #00D2FF;
+    --cyan-dim:    #3DBDEE;
+    --dark:        #0D0D0D;
+    --dark2:       #1D1D1B;
+    --dark3:       #252523;
+    --dark4:       #2E2E2C;
+    --text:        #F0F0EE;
+    --text-muted:  #888884;
+    --text-dim:    #444442;
+    --border:      rgba(0,210,255,0.13);
+    --border-mid:  rgba(0,210,255,0.25);
+    --border-hi:   rgba(0,210,255,0.40);
+    --green:       #3ECF8E;
+    --amber:       #F59E0B;
+    --red:         #EF4444;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,210,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,210,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-1 { animation: fadeUp 0.6s ease both; }
+  .fade-2 { animation: fadeUp 0.6s 0.1s ease both; }
+  .fade-3 { animation: fadeUp 0.6s 0.2s ease both; }
+  .fade-4 { animation: fadeUp 0.6s 0.3s ease both; }
+  .fade-5 { animation: fadeUp 0.6s 0.4s ease both; }
+
+  /* ── HEADER ── */
+  .header {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.5px solid var(--border-mid);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+  .logo {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+  .periodo-pill {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--dark);
+    background: var(--cyan);
+    padding: 5px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .header h1 strong {
+    font-weight: 800;
+    color: var(--cyan);
+    display: block;
+  }
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── NORTE ── */
+  .norte {
+    background: var(--dark2);
+    border: 0.5px solid var(--border-hi);
+    border-left: 3px solid var(--cyan);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .norte-icon {
+    font-size: 22px;
+    color: var(--cyan);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .norte-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .norte-text {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .norte-text strong { color: var(--cyan); font-weight: 600; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── OBJ CARDS ── */
+  .obj-list { margin-bottom: 3rem; }
+  .obj-card {
+    background: var(--dark2);
+    border: 0.5px solid var(--border);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .obj-card:hover { border-color: var(--border-mid); }
+  .obj-card.open { border-color: var(--border-hi); }
+  .obj-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.125rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .obj-num {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    min-width: 24px;
+  }
+  .obj-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    flex: 1;
+    line-height: 1.3;
+  }
+  .obj-tag {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 0.5px solid var(--border-mid);
+    color: var(--cyan-dim);
+    background: rgba(0,210,255,0.06);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .obj-tag.nuevo {
+    color: var(--green);
+    background: rgba(62,207,142,0.08);
+    border-color: rgba(62,207,142,0.3);
+  }
+  .obj-chevron {
+    font-size: 10px;
+    color: var(--text-dim);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .obj-card.open .obj-chevron { transform: rotate(180deg); }
+  .obj-body {
+    display: none;
+    padding: 0 1.5rem 1.5rem;
+    border-top: 0.5px solid var(--border);
+  }
+  .obj-card.open .obj-body { display: block; }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-top: 1rem;
+  }
+  .detail-block {
+    background: var(--dark3);
+    padding: 0.875rem 1rem;
+  }
+  .detail-label {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyan-dim);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .detail-text {
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.65;
+  }
+  .detail-text ul { padding-left: 1rem; }
+  .detail-text li { margin-bottom: 3px; }
+  .dep-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--amber);
+    margin-top: 4px;
+  }
+  .tbd-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--cyan-dim);
+    margin-top: 4px;
+  }
+
+  /* ── SEMANAS ── */
+  .semanas { margin-bottom: 3rem; }
+  .semana-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1rem;
+    margin-bottom: 0.875rem;
+    align-items: start;
+  }
+  .semana-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    padding-top: 4px;
+    line-height: 1.4;
+  }
+  .semana-label strong {
+    display: block;
+    font-weight: 500;
+    color: var(--cyan-dim);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+  .semana-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pill {
+    font-size: 11px;
+    padding: 5px 11px;
+    border: 0.5px solid var(--border);
+    color: var(--text-muted);
+    background: var(--dark3);
+  }
+  .pill.active {
+    background: rgba(0,210,255,0.07);
+    color: var(--cyan-dim);
+    border-color: var(--border-mid);
+  }
+
+  /* ── REPORTE ── */
+  .reporte {
+    background: var(--dark2);
+    border: 0.5px solid var(--border-hi);
+    padding: 1.75rem;
+    margin-bottom: 3rem;
+  }
+  .reporte-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .reporte-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+  }
+  .reporte-sub { font-size: 11px; color: var(--text-muted); }
+  .rep-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    table-layout: fixed;
+  }
+  .rep-table th {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 0.5px solid var(--border-mid);
+    font-weight: 400;
+  }
+  .rep-table td {
+    padding: 10px 10px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.03);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .rep-table tr:last-child td { border-bottom: none; }
+  .dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+  .d-cyan { background: var(--cyan); }
+  .d-gray { background: var(--text-dim); }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--dark2);
+    border-left: 2px solid var(--border-mid);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .footnote strong { color: var(--cyan-dim); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .footer-url { font-size: 11px; color: var(--text-dim); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 620px) {
+    .detail-grid { grid-template-columns: 1fr; }
+    .semana-row  { grid-template-columns: 90px 1fr; }
+    .header-top  { flex-direction: column; gap: 0.75rem; }
+    .obj-tag     { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header fade-1">
+    <div class="header-top">
+      <div class="logo">Marketing</div>
+      <div class="periodo-pill">01–30 Junio 2026</div>
+    </div>
+    <h1>Plan mensual<strong>Junio 2026</strong></h1>
+    <p class="header-meta">Aumentar el flujo de oportunidades comerciales · Canales: LinkedIn + LGM (lead generation) + programa de referidos.</p>
+  </header>
+
+  <!-- NORTE -->
+  <div class="norte fade-2">
+    <div class="norte-icon">→</div>
+    <div>
+      <div class="norte-label">Objetivo norte · 3 meses</div>
+      <div class="norte-text">
+        <strong>Aumentar el flujo de oportunidades comerciales en 3 meses</strong> · Indicadores: conversaciones iniciadas, reuniones generadas y SQLs · Canales: LinkedIn + LGM + programa de referidos.
+      </div>
+      <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:0.5px solid rgba(0,210,255,0.2);display:flex;align-items:flex-start;gap:0.75rem;">
+        <span style="font-size:10px;letter-spacing:0.15em;color:#F59E0B;text-transform:uppercase;font-weight:600;white-space:nowrap;margin-top:2px;">Hito · Junio</span>
+        <span style="font-size:13px;color:#888884;line-height:1.5;">5 reuniones generadas vía LGM + nueva web activa + caso Eurotur publicado + primer Rocking Webinar definido.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJETIVOS -->
+  <div class="fade-3">
+    <div class="section-title">Objetivos del mes</div>
+
+    <div class="obj-list">
+
+      <!-- OBJ 01 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">01</span>
+          <span class="obj-title">Calendario de contenidos ejecutado al 100%</span>
+          <span class="obj-tag">Impacto alto</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">Canal de adquisición de menor CAC. La consistencia sostiene todo lo demás y alimenta al ICP: el fundador de pyme que escucha a sus pares en LinkedIn.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta junio</div>
+              <div class="detail-text">100% de posts planificados publicados (Rocking + voz Martín + voz Emilio), incluyendo el posteo del caso Eurotur una vez aprobado por el cliente.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: % posts publicados vs. planificados.</li>
+                  <li>Secundaria: impresiones + engagement promedio.</li>
+                  <li>Fuente: LinkedIn Analytics (mensual).</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Hito junio parcial</div>
+              <div class="detail-text">Posts distribuidos por semana. Cada viernes se reporta publicados vs. planificados.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 02 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">02</span>
+          <span class="obj-title">Caso de éxito: publicar Eurotur + próximo caso</span>
+          <span class="obj-tag">Impacto alto</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">Mayor activo de conversión en etapa de evaluación del ICP. El fundador decide por prueba social de pares.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta junio</div>
+              <div class="detail-text">Publicar el caso Eurotur (LinkedIn + web) apenas el cliente apruebe + documentar Bravía.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: Eurotur publicado sí/no.</li>
+                  <li>Secundaria: alcance del post + visitas a la página del caso (GA4).</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Dependencia</div>
+              <div class="detail-text">Aprobación del cliente Eurotur, arrastrada de mayo.<div class="dep-flag">⚠ Sin el ok del cliente, no se publica.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 03 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">03</span>
+          <span class="obj-title">Videos: publicar mayo + próxima tanda</span>
+          <span class="obj-tag">Producción</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">El video humaniza la marca y amplifica el alcance orgánico en LinkedIn.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta junio</div>
+              <div class="detail-text">Publicar los 4 videos editados en mayo según el calendario + editar la próxima tanda. <span class="tbd-flag">⊙ Cantidad de videos nuevos a confirmar.</span></div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: N° de videos publicados.</li>
+                  <li>Secundaria: views + engagement por video.</li>
+                  <li>Fuente: CapCut + LinkedIn Analytics.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Hito junio parcial</div>
+              <div class="detail-text">Publicación escalonada a lo largo del mes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 04 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">04</span>
+          <span class="obj-title">Lead generation con LGM: 5 reuniones generadas</span>
+          <span class="obj-tag">Pipeline</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">El outbound personalizado vía LGM entra en ejecución real este mes. Es el canal que construye el pipeline comercial de los próximos meses.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta junio</div>
+              <div class="detail-text">5 reuniones generadas vía LGM, con mensajes segmentados por vertical.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Resultado principal: 5 reuniones generadas.</li>
+                  <li>Resultado: conversaciones iniciadas + SQLs.</li>
+                  <li>Actividad: mensajes enviados + respuestas.</li>
+                  <li>Fuente: LGM + seguimiento.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Dependencia</div>
+              <div class="detail-text">Credenciales de LinkedIn para configurar LGM.<div class="dep-flag">⚠ Pendiente de Martín / Emilio.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 05 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">05</span>
+          <span class="obj-title">Nueva web activa para mediados de junio</span>
+          <span class="obj-tag">Infraestructura</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">La nueva web es el activo de conversión central. Cierra el proyecto iniciado en mayo (contenidos y diseño ya aprobados).</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta junio</div>
+              <div class="detail-text">Nueva web activa y publicada para mediados de junio: versiones ES (/es/) y EN (/en/), home, landing transformación-ia, caso Eurotur y sección de equipo (founders / CTO).</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: web publicada sí/no antes de mediados de junio.</li>
+                  <li>Secundaria: secciones live + feedback incorporado.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Dependencia</div>
+              <div class="detail-text">Aprobación final de contenidos + definición de roles del equipo. Implementación.<div class="dep-flag">⚠ Roles del equipo a definir con Martín / Emilio.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJ 06 -->
+      <div class="obj-card" onclick="toggleCard(this)">
+        <div class="obj-header">
+          <span class="obj-num">06</span>
+          <span class="obj-title">Rocking Webinar</span>
+          <span class="obj-tag nuevo">Nuevo</span>
+          <span class="obj-chevron">▼</span>
+        </div>
+        <div class="obj-body">
+          <div class="detail-grid">
+            <div class="detail-block">
+              <div class="detail-label">Por qué</div>
+              <div class="detail-text">El webinar genera demanda y autoridad frente al ICP. Posiciona a Rocking como partner tecnológico de cabecera, con Martín y Emilio como voz experta.</div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Meta junio</div>
+              <div class="detail-text">Definir y planificar el primer Rocking Webinar: tema, fecha, formato, speakers, página de registro, etc. <span class="tbd-flag">⊙ A definir: ¿ejecución en julio?</span></div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Cómo se mide</div>
+              <div class="detail-text">
+                <ul>
+                  <li>Principal: webinar definido sí/no (tema + fecha + registro).</li>
+                  <li>Si se ejecuta: N° inscriptos + N° asistentes.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail-block">
+              <div class="detail-label">Dependencia</div>
+              <div class="detail-text">Disponibilidad de Martín / Emilio como speakers + definición del tema con ellos.<div class="dep-flag">⚠ Scope a alinear (objetivo nuevo, poco definido).</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEMANAS -->
+  <div class="fade-4">
+    <div class="section-title">Distribución semanal</div>
+    <div class="semanas">
+      <div class="semana-row">
+        <div class="semana-label"><strong>Sem 1</strong>2–6 junio</div>
+        <div class="semana-pills">
+          <span class="pill active">Calendario: posts sem 1</span>
+          <span class="pill active">Video: edición</span>
+          <span class="pill active">Caso éxito: publicar Eurotur</span>
+          <span class="pill active">LGM: configurar + primeros mensajes por vertical</span>
+          <span class="pill active">Web: cerrar contenidos + roles</span>
+          <span class="pill active">Webinar: definir tema + fecha</span>
+        </div>
+      </div>
+      <div class="semana-row">
+        <div class="semana-label"><strong>Sem 2</strong>9–13 junio</div>
+        <div class="semana-pills">
+          <span class="pill active">Calendario: posts sem 2</span>
+          <span class="pill active">Video: publicación</span>
+          <span class="pill active">LGM: enviar tanda + seguimiento</span>
+          <span class="pill active">Web: nueva web activa (mediados de junio)</span>
+          <span class="pill active">Webinar: speakers + página de registro</span>
+        </div>
+      </div>
+      <div class="semana-row">
+        <div class="semana-label"><strong>Sem 3</strong>16–20 junio</div>
+        <div class="semana-pills">
+          <span class="pill active">Calendario: posts sem 3</span>
+          <span class="pill active">LGM: reuniones en agenda</span>
+          <span class="pill active">Web: ajustes post-launch</span>
+          <span class="pill active">Caso éxito: avanzar próximo caso</span>
+          <span class="pill active">Webinar: difusión / inscripciones</span>
+        </div>
+      </div>
+      <div class="semana-row">
+        <div class="semana-label"><strong>Sem 4</strong>23–27 junio</div>
+        <div class="semana-pills">
+          <span class="pill active">Calendario: posts sem 4</span>
+          <span class="pill active">LGM: cerrar 5 reuniones</span>
+          <span class="pill active">Webinar: ejecución / confirmación de fecha</span>
+          <span class="pill">Reporte de cierre junio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORTE MODELO -->
+  <div class="fade-5">
+    <div class="section-title">Reporte · Modelo de cada viernes</div>
+    <div class="reporte">
+      <div class="reporte-header">
+        <span class="reporte-title">Estado por objetivo</span>
+        <span class="reporte-sub">Máx. 10 min de lectura</span>
+      </div>
+      <table class="rep-table">
+        <thead>
+          <tr>
+            <th style="width:24%">Objetivo</th>
+            <th style="width:26%">Meta del mes</th>
+            <th style="width:16%">Estado</th>
+            <th style="width:10%">Avance</th>
+            <th style="width:24%">Próximo paso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>01 · Calendario</td><td>100% posts publicados</td><td><span class="dot d-cyan"></span>—</td><td>—</td><td>—</td></tr>
+          <tr><td>02 · Caso de éxito</td><td>Eurotur publicado + próximo caso</td><td><span class="dot d-cyan"></span>—</td><td>—</td><td>—</td></tr>
+          <tr><td>03 · Videos</td><td>Publicar mayo + nueva tanda</td><td><span class="dot d-cyan"></span>—</td><td>—</td><td>—</td></tr>
+          <tr><td>04 · LGM</td><td>5 reuniones generadas</td><td><span class="dot d-cyan"></span>—</td><td>—</td><td>—</td></tr>
+          <tr><td>05 · Web</td><td>Nueva web activa</td><td><span class="dot d-cyan"></span>—</td><td>—</td><td>—</td></tr>
+          <tr><td>06 · Webinar</td><td>Primer webinar definido</td><td><span class="dot d-gray"></span>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FOOTNOTE -->
+  <div class="footnote fade-5">
+    <strong>Nota:</strong> los objetivos 01, 02 y 03 se mantienen desde mayo. 04 entra en ejecución (LGM), 05 cierra el proyecto web iniciado en mayo y 06 es un objetivo nuevo. El seguimiento es semanal cada viernes; retrospectiva al cierre del mes.
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-brand">Rocking · Marketing · Junio 2026</span>
+    <span class="footer-url">wearerocking.it</span>
+  </footer>
+
+</div>
+
+<script>
+  function toggleCard(card) { card.classList.toggle('open'); }
+</script>
+
+</body>
+</html>
